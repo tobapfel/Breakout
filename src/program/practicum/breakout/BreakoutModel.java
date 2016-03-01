@@ -4,8 +4,11 @@ public class BreakoutModel {
 	private boolean[][] bricks;
 	private int lives;
 
-	private int ballPosition;
-	private int paddlePosition;
+	private int ballPositionX;
+	private int ballPositionY;
+	
+	private int paddlePositionX;
+	
 	private int score;
 
 	/**
@@ -47,6 +50,18 @@ public class BreakoutModel {
 
 	public void removeBrick(int row, int column) {
 		this.bricks[row][column] = false;
+	}
+	
+	public int getBrickRowCount(){
+		return this.bricks.length;
+	}
+	
+	public int getBrickColumnCount(){
+		return this.bricks[0].length;
+	}
+	
+	public void setPaddlePosition(int x){
+		this.paddlePositionX = x;
 	}
 
 }
