@@ -7,7 +7,11 @@ public class View extends GraphicsProgram {
 	@Override
 	public void run() {
 		setSize(500, 700);
-		test tst = new test();
+
+	}
+
+	public Bricks addBrick (int row, col){
+		
 	}
 
 }
