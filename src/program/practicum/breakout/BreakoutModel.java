@@ -52,6 +52,14 @@ public class BreakoutModel {
 		this.bricks[row][column] = false;
 	}
 	
+	public int getBrickRowCount(){
+		return this.bricks.length;
+	}
+	
+	public int getBrickColumnCount(){
+		return this.bricks[0].length;
+	}
+	
 	public void setPaddlePosition(int x){
 		this.paddlePositionX = x;
 	}
