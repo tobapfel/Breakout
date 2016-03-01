@@ -8,6 +8,8 @@ public class View extends GraphicsProgram {
 	@Override
 	public void run() {
 		setSize(500, 700);
+		BreakoutController controller = new BreakoutController(this.model);
+		Bricks[][] bricks = new Bricks[1][1]; // get methoden fehlen
 
 	}
 
@@ -17,9 +19,10 @@ public class View extends GraphicsProgram {
 	 * @param brick
 	 *            an object of type Bricks
 	 */
-	public void removeBricks(Bricks brick) {
-		remove(brick);
-		model.removeBrick(brick.getRow(), brick.getCol());
+
+	public void updateView() {
+		removeAll();
+
 	}
 
 }
