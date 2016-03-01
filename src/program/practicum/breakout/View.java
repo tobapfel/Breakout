@@ -10,8 +10,8 @@ public class View extends GraphicsProgram {
 
 	}
 
-	public Bricks addBrick (int row, col){
-		
+	public Bricks addBrick(int row, int col) {
+		// blablabla
 	}
 
 }
