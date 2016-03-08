@@ -7,7 +7,7 @@ public class BreakoutThread implements Runnable {
 		while (true) {
 			view.updateView();
 			try {
-				Thread.sleep(100);
+				Thread.sleep(1000);
 			} catch (InterruptedException e) {
 			}
 		}
