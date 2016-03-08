@@ -19,8 +19,8 @@ public class BreakoutController {
 	}
 
 	private void setBallToStart() {
-		this.model.setBallPositionX(((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) + this.model.getPaddlePosition());
-		this.model.setBallPositionY(250 - view.BALL_SIZE);
+		this.model.setBallPositionX(((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
+		this.model.setBallPositionY(395 - view.BALL_SIZE);
 	}
 
 	public void mouseMoved(MouseEvent event) {

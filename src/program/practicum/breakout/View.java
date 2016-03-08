@@ -62,7 +62,7 @@ public class View extends GraphicsProgram {
 			this.paddle = new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT);
 			this.add(this.paddle);
 		}
-		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_WIDTH / 2, 300);
+		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_WIDTH / 2, 400);
 	}
 
 	public void updateBall() {
@@ -70,8 +70,8 @@ public class View extends GraphicsProgram {
 			this.ball = new Ball(BALL_SIZE);
 			this.add(this.ball);
 		}
-		this.ball.setLocation(this.model.getBallPositionX() - BALL_SIZE / 2,
-				this.model.getBallPositionY() - BALL_SIZE / 2);
+		this.ball.setLocation(this.model.getBallPositionX(),
+				this.model.getBallPositionY());
 	}
 
 	public void updateBricks() {
