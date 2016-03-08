@@ -19,7 +19,8 @@ public class BreakoutController {
 	}
 
 	private void setBallToStart() {
-		this.model.setBallPositionX(((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
+		this.model.setBallPositionX(
+				((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
 		this.model.setBallPositionY(395 - view.BALL_SIZE);
 	}
 
@@ -31,9 +32,16 @@ public class BreakoutController {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		this.model.setBallDeltaX(3);
-		this.model.setBallDeltaY(3);
-		mode = true;
+		if (!mode) {
+			this.model.setBallDeltaX(3);
+			this.model.setBallDeltaY(3);
+			mode = true;
+		} else if (mode) {
+			mode = false;
+			setBallToStart();
+			this.model.setBallDeltaX(0);
+			this.model.setBallDeltaY(0);
+		}
 	}
 
 	public void ballMovement() {
@@ -50,7 +58,7 @@ public class BreakoutController {
 				double paddleDistance = this.model.getBallPositionX() - this.model.getPaddlePosition();
 				System.out.println(paddleDistance);
 				this.model.setBallDeltaX(paddleDistance / 20.0);
-				return true;	
+				return true;
 			}
 			if (e.getClass().getSimpleName().equals("Bricks")) {
 				// Brick handling

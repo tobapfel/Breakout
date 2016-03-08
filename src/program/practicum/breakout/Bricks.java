@@ -18,8 +18,8 @@ public class Bricks extends GRect {
 	public Bricks(int row, int col, double numberOfRow, double numberOfCol, double windowHeight, double windowWidth) {
 		super(0, 0);
 
-		this.setSize((windowWidth / numberOfCol) - (10 / numberOfCol), (windowHeight * 0.2) / numberOfRow);
-		this.setLocation(this.getWidth() * col + 5, this.getHeight() * row + 5);
+		this.setSize((windowWidth / numberOfCol) - (40 / numberOfCol), (windowHeight * 0.2) / numberOfRow);
+		this.setLocation(this.getWidth() * col + 20, this.getHeight() * row + 20);
 		this.row = row;
 		this.col = col;
 
