@@ -62,7 +62,7 @@ public class View extends GraphicsProgram {
 			this.paddle = new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT);
 			this.add(this.paddle);
 		}
-		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_HEIGHT / 2, 250);
+		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_WIDTH / 2, 300);
 	}
 
 	public void updateBall() {
