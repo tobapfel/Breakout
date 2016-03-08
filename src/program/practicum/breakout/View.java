@@ -25,11 +25,16 @@ public class View extends GraphicsProgram {
 		setSize(500, 500);
 		this.model = new BreakoutModel(ROWS, COLUMNS, LIVES);
 		this.controller = new BreakoutController(this);
+		
+		this.addMouseListeners();
 	
 		Bricks[][] bricks = new Bricks[this.model.getBrickRowCount()][this.model.getBrickColumnCount()];
 	}
-
 	
+	public void mouseMoved(MouseEvent e){
+		this.controller.mouseMoved(e);
+	}
+
 	/**
 	 * removes a brick
 	 * 

@@ -15,7 +15,7 @@ public class BreakoutController {
 		this.view = view;
 		this.model = view.model;
 	}
-	/*
+	
 	public void mouseMoved(MouseEvent event) {
 		this.model.setPaddlePosition(event.getX());
 	}
@@ -23,7 +23,7 @@ public class BreakoutController {
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("CLICK!");
 	}
-	*/
+	
 	public void ballMovement(){
 		this.model.setBallPositionX(this.model.getBallPositionX() + this.model.getBallDeltaX());
 		this.model.setBallPositionY(this.model.getBallPositionY() + this.model.getBallDeltaY());
@@ -34,13 +34,6 @@ public class BreakoutController {
 	}
 
 	public void updateController() {
-		// move the paddle
-		// getMousePosition returns null, if the cursor is outside the window
-		// in that case we just leave the paddle where it is
-		Point mousePos = this.view.getGCanvas().getMousePosition();
-		if(mousePos != null){
-			this.model.setPaddlePosition(mousePos.getX());
-		}
 		// check for collisions and move the ball
 		ballCollision();
 		ballMovement();
