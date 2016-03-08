@@ -9,6 +9,7 @@ public class main {
 		while (true) {
 			view.controller.updateController();
 			view.updateView();
+
 			try {
 				Thread.sleep(25);
 			} catch (InterruptedException e) {

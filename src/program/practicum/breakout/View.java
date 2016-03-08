@@ -12,10 +12,10 @@ public class View extends GraphicsProgram {
 	public final int COLUMNS = 5;
 	private final int LIVES = 3;
 
-	private final int PADDLE_WIDTH = 100;
+	public final int PADDLE_WIDTH = 100;
 	private final int PADDLE_HEIGHT = 10;
 
-	private final int BALL_SIZE = 10;
+	public final int BALL_SIZE = 10;
 	Bricks[][] bricks;
 
 	@Override

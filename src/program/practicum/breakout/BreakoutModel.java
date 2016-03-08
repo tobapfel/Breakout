@@ -6,8 +6,8 @@ public class BreakoutModel {
 
 	private int ballPositionX;
 	private int ballPositionY;
-	private int ballDX = 3;
-	private int ballDY = 3;
+	private int ballDX = 0;
+	private int ballDY = 0;
 
 	private int paddlePositionX;
 
