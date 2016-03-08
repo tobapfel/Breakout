@@ -67,11 +67,27 @@ public class BreakoutModel {
 			for (int j = 0; j < this.getBrickColumnCount(); j++) {
 				if(b.equals(this.view.bricks[i][j])){
 					this.removeBrick(i, j);
+					if (checkGameOver()){
+						System.out.println("GAME OVER");
+					}
 					return;
 				}
 			}
 		}
 	}
+	/**
+	 *  true = game over
+	 * @return
+	 */
+	public boolean checkGameOver (){
+		boolean check = true;
+		for (int i = 0; i < this.getBrickRowCount(); i++) {
+			for (int j = 0; j < this.getBrickColumnCount(); j++) {
+				check = !(this.bricks [i][j]) && check;
+				}
+			}
+		return check;
+		}
 
 	public int getBrickRowCount() {
 		return this.bricks.length;
