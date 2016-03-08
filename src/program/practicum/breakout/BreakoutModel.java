@@ -1,6 +1,9 @@
 package program.practicum.breakout;
 
+import acm.graphics.GObject;
+
 public class BreakoutModel {
+	private View view;
 	public boolean[][] bricks;
 	private int lives;
 
@@ -23,7 +26,7 @@ public class BreakoutModel {
 	 *            [int] The number of lives, the user has. The game ends, when
 	 *            there are no lives left.
 	 */
-	public BreakoutModel(int rows, int columns, int lives) {
+	public BreakoutModel(View view, int rows, int columns, int lives) {
 		if (rows < 1) {
 			throw new IllegalArgumentException("The game needs at least 1 row of bricks. You've entered: " + rows);
 		}
@@ -34,7 +37,8 @@ public class BreakoutModel {
 		if (lives < 1) {
 			throw new IllegalArgumentException("The player needs at least 1 live. You've entered: " + lives);
 		}
-
+		
+		this.view = view;
 		this.bricks = new boolean[rows][columns];
 		this.lives = lives;
 		this.score = 0;
@@ -56,6 +60,16 @@ public class BreakoutModel {
 	public void removeBrick(int row, int column) {
 		System.out.println("REMOVING BRICK: " + row + ", " + column);
 		this.bricks[row][column] = false;
+	}
+	
+	public void removeBrick(GObject b){
+		for (int i = 0; i < this.getBrickRowCount(); i++) {
+			for (int j = 0; j < this.getBrickColumnCount(); j++) {
+				if(b.equals(this.view.bricks[i][j])){
+					this.removeBrick(i, j);
+				}
+			}
+		}
 	}
 
 	public int getBrickRowCount() {

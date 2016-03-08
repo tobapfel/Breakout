@@ -57,11 +57,11 @@ public class BreakoutController {
 				// Paddle handling
 				double paddleDistance = this.model.getBallPositionX() - this.model.getPaddlePosition();
 				System.out.println(paddleDistance);
-				this.model.setBallDeltaX(paddleDistance / 20.0);
+				this.model.setBallDeltaX(paddleDistance / 10.0);
 				return true;
 			}
 			if (e.getClass().getSimpleName().equals("Bricks")) {
-				// Brick handling
+				this.model.removeBrick(e);
 				return true;
 			}
 		}

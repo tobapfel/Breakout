@@ -23,7 +23,7 @@ public class View extends GraphicsProgram {
 	@Override
 	public void run() {
 		setSize(500, 500);
-		this.model = new BreakoutModel(ROWS, COLUMNS, LIVES);
+		this.model = new BreakoutModel(this, ROWS, COLUMNS, LIVES);
 		this.controller = new BreakoutController(this);
 
 		this.addMouseListeners();
@@ -51,6 +51,7 @@ public class View extends GraphicsProgram {
 	}
 
 	public void updateView() {
+		this.removeAll();
 		// the ball needs to be at the bottom for correct collision detection
 		this.updateBall();
 		this.updatePaddle();
@@ -58,23 +59,16 @@ public class View extends GraphicsProgram {
 	}
 
 	public void updatePaddle() {
-		if (this.paddle == null) {
-			this.paddle = new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT);
-			this.add(this.paddle);
-		}
-		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_WIDTH / 2, 400);
+		this.add(new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT), this.model.getPaddlePosition() - PADDLE_WIDTH / 2, 400);
 	}
 
 	public void updateBall() {
-		if (this.ball == null) {
-			this.ball = new Ball(BALL_SIZE);
-			this.add(this.ball);
-		}
-		this.ball.setLocation(this.model.getBallPositionX(),
+		this.add(new Ball(BALL_SIZE), this.model.getBallPositionX(),
 				this.model.getBallPositionY());
 	}
 
 	public void updateBricks() {
+		
 		for (int i = 0; i < this.model.getBrickRowCount(); i++) {
 			for (int j = 0; j < this.model.getBrickColumnCount(); j++) {
 				Bricks b = bricks[i][j];
