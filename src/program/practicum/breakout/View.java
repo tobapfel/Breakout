@@ -74,8 +74,7 @@ public class View extends GraphicsProgram {
 				Bricks b = bricks[i][j];
 				if (this.model.bricks[i][j] == true) {
 					add(b);
-				} else
-					return;
+				} 
 			}
 		}
 	}
