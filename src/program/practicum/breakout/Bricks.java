@@ -22,6 +22,7 @@ public class Bricks extends GRect {
 		this.setLocation(this.getWidth() * col + 20, this.getHeight() * row + 20);
 		this.row = row;
 		this.col = col;
+		this.setColor(Color.WHITE);
 
 		switch (row % 8) {
 		case 0:
