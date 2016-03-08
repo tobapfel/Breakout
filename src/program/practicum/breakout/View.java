@@ -45,6 +45,11 @@ public class View extends GraphicsProgram {
 		this.controller.mouseMoved(e);
 	}
 
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		this.controller.mouseClicked(e);
+	}
+
 	public void updateView() {
 		// the ball needs to be at the bottom for correct collision detection
 		this.updateBall();
@@ -53,19 +58,20 @@ public class View extends GraphicsProgram {
 	}
 
 	public void updatePaddle() {
-		if(this.paddle == null){
+		if (this.paddle == null) {
 			this.paddle = new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT);
 			this.add(this.paddle);
 		}
 		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_HEIGHT / 2, 250);
 	}
-	
-	public void updateBall(){
-		if(this.ball == null){
+
+	public void updateBall() {
+		if (this.ball == null) {
 			this.ball = new Ball(BALL_SIZE);
 			this.add(this.ball);
 		}
-		this.ball.setLocation(this.model.getBallPositionX() - BALL_SIZE / 2, this.model.getBallPositionY() -  BALL_SIZE / 2);
+		this.ball.setLocation(this.model.getBallPositionX() - BALL_SIZE / 2,
+				this.model.getBallPositionY() - BALL_SIZE / 2);
 	}
 
 	public void updateBricks() {
