@@ -1,6 +1,9 @@
 package program.practicum.breakout;
 
+import java.awt.Point;
 import java.awt.event.MouseEvent;
+
+import acm.graphics.GObject;
 
 public class BreakoutController {
 
