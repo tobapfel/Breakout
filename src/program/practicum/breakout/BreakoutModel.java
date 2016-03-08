@@ -1,17 +1,16 @@
 package program.practicum.breakout;
 
 public class BreakoutModel {
-	private boolean[][] bricks;
+	public boolean[][] bricks;
 	private int lives;
 
 	private int ballPositionX;
 	private int ballPositionY;
 	private int ballDX = 3;
 	private int ballDY = 3;
-	
-	
+
 	private int paddlePositionX;
-	
+
 	private int score;
 
 	/**
@@ -42,6 +41,10 @@ public class BreakoutModel {
 		this.score = 0;
 	}
 
+	public void setBrick(int row, int col) {
+		this.bricks[row][col] = true;
+	}
+
 	/**
 	 * Remove the Brick at the given coordinate
 	 * 
@@ -55,23 +58,24 @@ public class BreakoutModel {
 		System.out.println("REMOVING BRICK: " + row + ", " + column);
 		this.bricks[row][column] = false;
 	}
-	
-	public int getBrickRowCount(){
+
+	public int getBrickRowCount() {
 		return this.bricks.length;
 	}
-	
-	public int getBrickColumnCount(){
+
+	public int getBrickColumnCount() {
 		return this.bricks[0].length;
 	}
-	
-	public void setPaddlePosition(double x){
-		this.setPaddlePosition((int)x);
+
+	public void setPaddlePosition(double x) {
+		this.setPaddlePosition((int) x);
 	}
-	
-	public void setPaddlePosition(int x){
+
+	public void setPaddlePosition(int x) {
 		this.paddlePositionX = x;
 	}
-	public int getPaddlePosition(){
+
+	public int getPaddlePosition() {
 		return this.paddlePositionX;
 	}
 
@@ -79,6 +83,7 @@ public class BreakoutModel {
 		// TODO Auto-generated method stub
 		return this.ballPositionX;
 	}
+
 	public int getBallPositionY() {
 		// TODO Auto-generated method stub
 		return this.ballPositionY;
@@ -88,6 +93,7 @@ public class BreakoutModel {
 		// TODO Auto-generated method stub
 		return this.ballDX;
 	}
+
 	public int getBallDeltaY() {
 		// TODO Auto-generated method stub
 		return this.ballDY;
@@ -96,6 +102,7 @@ public class BreakoutModel {
 	public void setBallPositionX(int x) {
 		this.ballPositionX = x;
 	}
+
 	public void setBallPositionY(int y) {
 		this.ballPositionY = y;
 	}

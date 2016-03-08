@@ -15,24 +15,31 @@ public class Bricks extends GRect {
 	 * @param col
 	 *            of the brick
 	 */
-	public Bricks(int row, int col) {
-		super(col * 10 + row * 2, 50 + row * 5 + (row - 1) * 2, 5, 10);
+	public Bricks(int row, int col, double numberOfRow, double numberOfCol, double windowHeight, double windowWidth) {
+		super(0, 0);
+
+		this.setSize((windowWidth / numberOfCol) - (10 / numberOfCol), (windowHeight * 0.2) / numberOfRow);
+		this.setLocation(this.getWidth() * col + 5, this.getHeight() * row + 5);
 		this.row = row;
 		this.col = col;
 
-		switch (col % 8) {
+		switch (row % 8) {
 		case 0:
 		case 1:
 			this.setFillColor(Color.RED);
+			break;
 		case 2:
 		case 3:
 			this.setFillColor(Color.ORANGE);
+			break;
 		case 4:
 		case 5:
 			this.setFillColor(Color.YELLOW);
+			break;
 		case 6:
 		case 7:
 			this.setFillColor(Color.ORANGE);
+			break;
 		}
 		this.setFilled(true);
 	}

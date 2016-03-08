@@ -1,37 +1,45 @@
 package program.practicum.breakout;
 
-import java.awt.Color;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
-import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 
 public class View extends GraphicsProgram {
 	BreakoutModel model;
 	BreakoutController controller;
-	
-	private final int ROWS = 1;
-	private final int COLUMNS = 1;
+
+	public final int ROWS = 5;
+	public final int COLUMNS = 5;
 	private final int LIVES = 3;
-	
+
 	private final int PADDLE_WIDTH = 100;
 	private final int PADDLE_HEIGHT = 10;
-	
+
 	private final int BALL_SIZE = 10;
-	
-	public void run(){
+	Bricks[][] bricks;
+
+	@Override
+	public void run() {
 		setSize(500, 500);
 		this.model = new BreakoutModel(ROWS, COLUMNS, LIVES);
 		this.controller = new BreakoutController(this);
-		
+
 		this.addMouseListeners();
-	
-		Bricks[][] bricks = new Bricks[this.model.getBrickRowCount()][this.model.getBrickColumnCount()];
+
+		bricks = new Bricks[this.model.getBrickRowCount()][this.model.getBrickColumnCount()];
+
+		for (int i = 0; i < this.model.getBrickRowCount(); i++) {
+			for (int j = 0; j < this.model.getBrickColumnCount(); j++) {
+				Bricks brick = new Bricks(i, j, ROWS, COLUMNS, getHeight(), getWidth());
+				bricks[i][j] = brick;
+				this.model.setBrick(i, j);
+
+			}
+		}
 	}
-	
-	public void mouseMoved(MouseEvent e){
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
 		this.controller.mouseMoved(e);
 	}
 
@@ -45,13 +53,27 @@ public class View extends GraphicsProgram {
 		this.removeAll();
 		this.updatePaddle();
 		this.updateBall();
+		this.updateBricks();
 	}
-	
-	public void updatePaddle(){
+
+	public void updatePaddle() {
 		this.add(new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT), this.model.getPaddlePosition() - PADDLE_HEIGHT / 2, 300);
 	}
-	
-	public void updateBall(){
-		this.add(new Ball(BALL_SIZE), this.model.getBallPositionX() - BALL_SIZE / 2, this.model.getBallPositionY() -  BALL_SIZE / 2);
+
+	public void updateBall() {
+		this.add(new Ball(BALL_SIZE), this.model.getBallPositionX() - BALL_SIZE / 2,
+				this.model.getBallPositionY() - BALL_SIZE / 2);
+	}
+
+	public void updateBricks() {
+		for (int i = 0; i < this.model.getBrickRowCount(); i++) {
+			for (int j = 0; j < this.model.getBrickColumnCount(); j++) {
+				Bricks b = bricks[i][j];
+				if (this.model.bricks[i][j] == true) {
+					add(b);
+				} else
+					return;
+			}
+		}
 	}
 }
