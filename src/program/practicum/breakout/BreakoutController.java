@@ -33,8 +33,8 @@ public class BreakoutController {
 
 	public void mouseClicked(MouseEvent e) {
 		if (!mode) {
-			this.model.setBallDeltaX(3);
-			this.model.setBallDeltaY(3);
+			this.model.setBallDeltaX(0);
+			this.model.setBallDeltaY(-3);
 			mode = true;
 		} else if (mode) {
 			mode = false;
@@ -98,7 +98,12 @@ public class BreakoutController {
 		}
 		// window bottom edge
 		else if (bottomLeftCorner().getY() > this.view.getHeight()) {
-			this.model.setBallDeltaY(-1 * this.model.getBallDeltaY());
+			//this.model.setBallDeltaY(-1 * this.model.getBallDeltaY());
+			// Leben entfernen!
+			this.setBallToStart();
+			this.model.setBallDeltaX(0);
+			this.model.setBallDeltaY(0);
+			this.mode = false;
 		}
 		// window top edge
 		else if (topLeftCorner().getY() < 0) {

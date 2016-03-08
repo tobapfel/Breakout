@@ -11,7 +11,7 @@ public class main {
 			view.updateView();
 
 			try {
-				Thread.sleep(10);
+				Thread.sleep(7);
 			} catch (InterruptedException e) {
 
 			}

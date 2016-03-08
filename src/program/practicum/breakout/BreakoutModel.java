@@ -67,6 +67,7 @@ public class BreakoutModel {
 			for (int j = 0; j < this.getBrickColumnCount(); j++) {
 				if(b.equals(this.view.bricks[i][j])){
 					this.removeBrick(i, j);
+					return;
 				}
 			}
 		}
