@@ -13,10 +13,12 @@ public class View extends GraphicsProgram {
 	private final int LIVES = 3;
 
 	private final int PADDLE_WIDTH = 100;
-	private final int PADDLE_HEIGHT = 10;
+	private final int PADDLE_HEIGHT = 100;
 
-	private final int BALL_SIZE = 10;
+	public final int BALL_SIZE = 10;
 	Bricks[][] bricks;
+	private Ball ball;
+	private Paddle paddle;
 
 	@Override
 	public void run() {
@@ -43,26 +45,27 @@ public class View extends GraphicsProgram {
 		this.controller.mouseMoved(e);
 	}
 
-	/**
-	 * removes a brick
-	 * 
-	 * @param brick
-	 *            an object of type Bricks
-	 */
 	public void updateView() {
-		this.removeAll();
-		this.updatePaddle();
+		// the ball needs to be at the bottom for correct collision detection
 		this.updateBall();
+		this.updatePaddle();
 		this.updateBricks();
 	}
 
 	public void updatePaddle() {
-		this.add(new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT), this.model.getPaddlePosition() - PADDLE_HEIGHT / 2, 300);
+		if(this.paddle == null){
+			this.paddle = new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT);
+			this.add(this.paddle);
+		}
+		this.paddle.setLocation(this.model.getPaddlePosition() - PADDLE_HEIGHT / 2, 250);
 	}
-
-	public void updateBall() {
-		this.add(new Ball(BALL_SIZE), this.model.getBallPositionX() - BALL_SIZE / 2,
-				this.model.getBallPositionY() - BALL_SIZE / 2);
+	
+	public void updateBall(){
+		if(this.ball == null){
+			this.ball = new Ball(BALL_SIZE);
+			this.add(this.ball);
+		}
+		this.ball.setLocation(this.model.getBallPositionX() - BALL_SIZE / 2, this.model.getBallPositionY() -  BALL_SIZE / 2);
 	}
 
 	public void updateBricks() {

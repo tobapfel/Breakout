@@ -4,11 +4,11 @@ public class BreakoutModel {
 	public boolean[][] bricks;
 	private int lives;
 
-	private int ballPositionX;
-	private int ballPositionY;
-	private int ballDX = 3;
-	private int ballDY = 3;
-
+	private double ballPositionX;
+	private double ballPositionY;
+	private double ballDX = 1;
+	private double ballDY = 1;
+	
 	private int paddlePositionX;
 
 	private int score;
@@ -79,31 +79,31 @@ public class BreakoutModel {
 		return this.paddlePositionX;
 	}
 
-	public int getBallPositionX() {
-		// TODO Auto-generated method stub
+	public double getBallPositionX() {
 		return this.ballPositionX;
 	}
-
-	public int getBallPositionY() {
-		// TODO Auto-generated method stub
+	public double getBallPositionY() {
 		return this.ballPositionY;
 	}
 
-	public int getBallDeltaX() {
-		// TODO Auto-generated method stub
+	public double getBallDeltaX() {
 		return this.ballDX;
 	}
-
-	public int getBallDeltaY() {
-		// TODO Auto-generated method stub
+	public double getBallDeltaY() {
 		return this.ballDY;
 	}
+	public void setBallDeltaX(double x) {
+		this.ballDX = x;
+	}
+	public void setBallDeltaY(double y) {
+		this.ballDY = y;
+	}
+	
 
-	public void setBallPositionX(int x) {
+	public void setBallPositionX(double x) {
 		this.ballPositionX = x;
 	}
-
-	public void setBallPositionY(int y) {
+	public void setBallPositionY(double y) {
 		this.ballPositionY = y;
 	}
 
