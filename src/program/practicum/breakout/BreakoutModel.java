@@ -102,6 +102,8 @@ public class BreakoutModel {
 	}
 
 	public void setPaddlePosition(int x) {
+		x = Math.max(x, this.view.PADDLE_WIDTH / 2);
+		x = Math.min(x, this.view.WINDOW_WIDTH - (this.view.PADDLE_WIDTH / 2));
 		this.paddlePositionX = x;
 	}
 

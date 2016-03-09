@@ -8,8 +8,8 @@ public class View extends GraphicsProgram {
 	BreakoutModel model;
 	BreakoutController controller;
 	
-	private int WINDOW_WIDTH;
-	private int WINDOW_HEIGHT;
+	public int WINDOW_WIDTH;
+	public int WINDOW_HEIGHT;
 
 	public int ROWS;
 	public int COLUMNS;
