@@ -2,6 +2,7 @@ package program.practicum.breakout;
 
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GLabel;
 import acm.program.GraphicsProgram;
 
 public class View extends GraphicsProgram {
@@ -79,6 +80,8 @@ public class View extends GraphicsProgram {
 		this.updateBall();
 		this.updatePaddle();
 		this.updateBricks();
+	
+		this.add(new GLabel("" + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
 	}
 
 	public void updatePaddle() {

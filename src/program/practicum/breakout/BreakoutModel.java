@@ -13,7 +13,7 @@ public class BreakoutModel {
 	private double ballDY = 0;
 	private double paddlePositionX;
 
-	private double score;
+	private int score;
 
 	/**
 	 * Constructor
@@ -59,6 +59,9 @@ public class BreakoutModel {
 
 	public void removeBrick(int row, int column) {
 		System.out.println("REMOVING BRICK: " + row + ", " + column);
+		if(this.bricks[row][column] == true){
+			this.addScore();
+		}
 		this.bricks[row][column] = false;
 	}
 	
@@ -142,5 +145,15 @@ public class BreakoutModel {
 	public void setBallPositionY(double y) {
 		this.ballPositionY = y;
 	}
-
+	
+	public int getScore(){
+		return this.score;
+	}
+	
+	public void resetScore(){
+		this.score = 0;
+	}
+	public void addScore(){
+		this.score += 1;
+	}
 }
