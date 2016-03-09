@@ -52,5 +52,4 @@ public class Bricks extends GRect {
 	public int getCol() {
 		return this.col;
 	}
-	// begrenzung fehlt
 }

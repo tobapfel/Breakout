@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.event.MouseEvent;
 
+import acm.graphics.GImage;
 import acm.graphics.GLabel;
 import acm.program.GraphicsProgram;
 
@@ -82,8 +83,13 @@ public class View extends GraphicsProgram {
 		this.updateBall();
 		this.updatePaddle();
 		this.updateBricks();
+		if (!this.controller.checkLiveLeft()){
+			gameOverScreen();
+			this.controller.stopGame();
+		}
 		if (this.model.checkGameOver()){
 			gameOverScreen();
+			this.controller.stopGame();
 		}
 	
 		this.add(new GLabel("" + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
@@ -121,4 +127,10 @@ public class View extends GraphicsProgram {
 		add (label);
 		
 	}
+	
+	/*public void heartImg (){ //anzeige flackert aufgrund des image
+		GImage img = new GImage("Heart.png", 500, 500);
+		add (img);
+	}
+	*/
 }

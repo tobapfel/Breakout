@@ -22,8 +22,17 @@ public class BreakoutController {
 		this.model.setBallPositionX(
 				((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
 		this.model.setBallPositionY(view.PADDLE_Y - 5 - view.BALL_SIZE);
+		stopGame();
+	}
+	
+	public void stopGame() {
 		this.model.setBallDeltaX(0);
 		this.model.setBallDeltaY(0);
+	}
+	
+	public void startGame() {
+		this.model.setBallDeltaX(0);
+		this.model.setBallDeltaY(-1 * this.view.BALL_SPEED);
 	}
 
 	public void mouseMoved(MouseEvent event) {
@@ -35,8 +44,7 @@ public class BreakoutController {
 
 	public void mouseClicked(MouseEvent e) {
 		if (!mode) {
-			this.model.setBallDeltaX(0);
-			this.model.setBallDeltaY(-1 * this.view.BALL_SPEED);
+			startGame();
 		} else{
 			setBallToStart();
 		}
@@ -101,6 +109,7 @@ public class BreakoutController {
 			// Leben entfernen!
 			this.setBallToStart();
 			this.mode = false;
+			this.model.lives -= 1;
 		}
 		// window top edge
 		else if (topLeftCorner().getY() < 0) {
@@ -123,6 +132,17 @@ public class BreakoutController {
 				&& !(collisionAt(topRightCorner()) && collisionAt(bottomRightCorner()))) {
 			this.model.setBallDeltaX(-1 * this.model.getBallDeltaX());
 		}
+	}
+	/**
+	 * true = lives are left
+	 * false = no live is left
+	 * @return
+	 */
+	public boolean checkLiveLeft (){
+		if (this.model.lives == 0){
+			return false;
+		}
+		return true;
 	}
 
 	public void updateController() {

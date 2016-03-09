@@ -5,7 +5,7 @@ import acm.graphics.GObject;
 public class BreakoutModel {
 	private View view;
 	public boolean[][] bricks;
-	private int lives;
+	public int lives;
 
 	private double ballPositionX;
 	private double ballPositionY;
