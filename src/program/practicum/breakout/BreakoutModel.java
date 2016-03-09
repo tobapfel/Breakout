@@ -13,7 +13,7 @@ public class BreakoutModel {
 	private double ballDY = 0;
 	private double paddlePositionX;
 
-	private int score;
+	public int score;
 
 	/**
 	 * Constructor
@@ -70,9 +70,6 @@ public class BreakoutModel {
 			for (int j = 0; j < this.getBrickColumnCount(); j++) {
 				if(b.equals(this.view.bricks[i][j])){
 					this.removeBrick(i, j);
-					if (checkGameOver()){
-						System.out.println("GAME OVER");
-					}
 					return;
 				}
 			}

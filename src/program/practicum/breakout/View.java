@@ -1,5 +1,7 @@
 package program.practicum.breakout;
 
+import java.awt.Color;
+import java.awt.FontMetrics;
 import java.awt.event.MouseEvent;
 
 import acm.graphics.GLabel;
@@ -80,6 +82,9 @@ public class View extends GraphicsProgram {
 		this.updateBall();
 		this.updatePaddle();
 		this.updateBricks();
+		if (this.model.checkGameOver()){
+			gameOverScreen();
+		}
 	
 		this.add(new GLabel("" + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
 	}
@@ -103,5 +108,17 @@ public class View extends GraphicsProgram {
 				} 
 			}
 		}
+	}
+	
+	public void gameOverScreen(){
+		GLabel label = new GLabel("GAME OVER");
+		label.setFont("arial-bold-70");
+		FontMetrics fm = label.getFontMetrics();
+		int lineHeight = fm.getHeight();
+		int lineWidth = fm.stringWidth("GAME OVER");
+		label.setLocation((WINDOW_WIDTH - lineWidth) / 2, (WINDOW_HEIGHT - lineHeight) / 2);
+		label.setColor(Color.BLACK);
+		add (label);
+		
 	}
 }
