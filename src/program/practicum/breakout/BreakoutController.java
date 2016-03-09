@@ -21,27 +21,26 @@ public class BreakoutController {
 	private void setBallToStart() {
 		this.model.setBallPositionX(
 				((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
-		this.model.setBallPositionY(395 - view.BALL_SIZE);
+		this.model.setBallPositionY(view.PADDLE_Y - 5 - view.BALL_SIZE);
+		this.model.setBallDeltaX(0);
+		this.model.setBallDeltaY(0);
 	}
 
 	public void mouseMoved(MouseEvent event) {
 		this.model.setPaddlePosition(event.getX());
-		if (!mode)
+		if (!mode){
 			setBallToStart();
-
+		}
 	}
 
 	public void mouseClicked(MouseEvent e) {
 		if (!mode) {
 			this.model.setBallDeltaX(0);
-			this.model.setBallDeltaY(-3);
-			mode = true;
-		} else if (mode) {
-			mode = false;
+			this.model.setBallDeltaY(-1 * this.view.BALL_SPEED);
+		} else{
 			setBallToStart();
-			this.model.setBallDeltaX(0);
-			this.model.setBallDeltaY(0);
 		}
+		mode = !mode;
 	}
 
 	public void ballMovement() {
@@ -57,7 +56,7 @@ public class BreakoutController {
 				// Paddle handling
 				double paddleDistance = this.model.getBallPositionX() - this.model.getPaddlePosition();
 				System.out.println(paddleDistance);
-				this.model.setBallDeltaX(paddleDistance / 10.0);
+				this.model.setBallDeltaX((paddleDistance / this.view.PADDLE_WIDTH) * 5);
 				return true;
 			}
 			if (e.getClass().getSimpleName().equals("Bricks")) {
@@ -101,8 +100,6 @@ public class BreakoutController {
 			//this.model.setBallDeltaY(-1 * this.model.getBallDeltaY());
 			// Leben entfernen!
 			this.setBallToStart();
-			this.model.setBallDeltaX(0);
-			this.model.setBallDeltaY(0);
 			this.mode = false;
 		}
 		// window top edge
@@ -129,15 +126,8 @@ public class BreakoutController {
 	}
 
 	public void updateController() {
-		// check for collisions and move the ball
 		ballCollision();
 		ballMovement();
-
-		// System.out.println(this.model.getBallPositionX() + "," +
-		// this.model.getBallPositionY());
-
-		// break the bricks
-
 	}
 
 }

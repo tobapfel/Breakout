@@ -7,22 +7,45 @@ import acm.program.GraphicsProgram;
 public class View extends GraphicsProgram {
 	BreakoutModel model;
 	BreakoutController controller;
+	
+	private int WINDOW_WIDTH;
+	private int WINDOW_HEIGHT;
 
-	public final int ROWS = 5;
-	public final int COLUMNS = 5;
-	private final int LIVES = 3;
+	public int ROWS;
+	public int COLUMNS;
+	private int LIVES;
 
-	public final int PADDLE_WIDTH = 100;
-	private final int PADDLE_HEIGHT = 10;
+	public int PADDLE_WIDTH;
+	private int PADDLE_HEIGHT;
+	public int PADDLE_Y;
 
-	public final int BALL_SIZE = 10;
+	public int BALL_SIZE;
+	public int BALL_SPEED;
+	
 	Bricks[][] bricks;
 	private Ball ball;
 	private Paddle paddle;
+	
+	public View(Settings settings){
+		this.WINDOW_WIDTH = settings.get("WINDOW_WIDTH");
+		this.WINDOW_HEIGHT = settings.get("WINDOW_HEIGHT");
+		
+		this.ROWS = settings.get("ROWS");
+		this.COLUMNS = settings.get("COLUMNS");
+		this.LIVES = settings.get("LIVES");
+		
+		this.PADDLE_WIDTH = (int)(this.WINDOW_WIDTH * 0.3);
+		this.PADDLE_HEIGHT = settings.get("PADDLE_HEIGHT");
+		this.PADDLE_Y = (int)(this.WINDOW_HEIGHT * 0.85);
+		
+		this.BALL_SIZE = settings.get("BALL_SIZE");
+		
+		this.BALL_SPEED = settings.get("BALL_SPEED");
+	}
 
 	@Override
 	public void run() {
-		setSize(500, 500);
+		setSize(this.WINDOW_WIDTH, this.WINDOW_HEIGHT);
 		this.model = new BreakoutModel(this, ROWS, COLUMNS, LIVES);
 		this.controller = new BreakoutController(this);
 
@@ -59,7 +82,7 @@ public class View extends GraphicsProgram {
 	}
 
 	public void updatePaddle() {
-		this.add(new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT), this.model.getPaddlePosition() - PADDLE_WIDTH / 2, 400);
+		this.add(new Paddle(PADDLE_WIDTH, PADDLE_HEIGHT), this.model.getPaddlePosition() - PADDLE_WIDTH / 2, this.PADDLE_Y);
 	}
 
 	public void updateBall() {
