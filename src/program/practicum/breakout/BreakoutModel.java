@@ -230,6 +230,7 @@ public class BreakoutModel {
 	public void nextLevel(){
 		level += 1;
 		multiplikator += 1;
+		lives += 1;
 	}
 	
 	public void loseLive(){
