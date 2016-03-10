@@ -24,7 +24,7 @@ public class BreakoutController {
 	/**
 	 * Put the ball on the paddle and set it's speed to 0.
 	 */
-	private void setBallToStart() {
+	public void setBallToStart() {
 		this.model.setBallPositionX(
 				((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
 		this.model.setBallPositionY(view.PADDLE_Y - 5 - view.BALL_SIZE);
@@ -52,8 +52,8 @@ public class BreakoutController {
 	 * Update the paddlePosition
 	 * @param p The point, whereto the mouse moved
 	 */
-	public void handleMouseMovement(Point p) {
-		this.model.setPaddlePosition(p.getX());
+	public void mouseMoved(MouseEvent e) {
+		this.model.setPaddlePosition(e.getX());
 		if (mode == 1 || mode == 3){
 			setBallToStart();
 		}
@@ -62,7 +62,7 @@ public class BreakoutController {
 	/**
 	 * Start the game or reset the ball
 	 */
-	public void handleMouseClick() {
+	public void mouseClicked(MouseEvent e) {
 		if (mode == 1) {
 			startGame();
 			mode = 2;
