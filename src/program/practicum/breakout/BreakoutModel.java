@@ -86,10 +86,10 @@ public class BreakoutModel {
 		}
 	}
 	/**
-	 *  true = game over
-	 * @return
+	 *  Checks if the game is over or not
+	 * @return true when game over
 	 */
-	public boolean checkGameOver (){
+	public boolean checkNoBricksLeft (){
 		boolean check = true;
 		for (int i = 0; i < this.getBrickRowCount(); i++) {
 			for (int j = 0; j < this.getBrickColumnCount(); j++) {
@@ -101,7 +101,7 @@ public class BreakoutModel {
 
 	/**
 	 * Get the number of bricks in each row
-	 * @return
+	 * @return the number of bricks in each row
 	 */
 	public int getBrickRowCount() {
 		return this.bricks.length;
@@ -109,7 +109,7 @@ public class BreakoutModel {
 
 	/**
 	 * Get the number of bricks in each column
-	 * @return
+	 * @return the number of bricks in each column
 	 */
 	public int getBrickColumnCount() {
 		return this.bricks[0].length;
@@ -125,7 +125,7 @@ public class BreakoutModel {
 	
 	/**
 	 * Set the position of the paddle
-	 * @param x
+	 * @param x 
 	 */
 	public void setPaddlePosition(int x) {
 		x = Math.max(x, this.view.PADDLE_WIDTH / 2);
@@ -135,7 +135,7 @@ public class BreakoutModel {
 
 	/**
 	 * Get the position of the paddle
-	 * @return
+	 * @return the position of the paddle
 	 */
 	public double getPaddlePosition() {
 		return this.paddlePositionX;
@@ -143,7 +143,7 @@ public class BreakoutModel {
 	
 	/**
 	 * Get the position of the ball in x-direction
-	 * @return
+	 * @return the position of the ball in x-direction
 	 */
 	public double getBallPositionX() {
 		return this.ballPositionX;
@@ -151,7 +151,7 @@ public class BreakoutModel {
 
 	/**
 	 * Get the position of the ball in y-direction
-	 * @return
+	 * @return the position of the ball in y-direction
 	 */
 	public double getBallPositionY() {
 		return this.ballPositionY;
@@ -159,7 +159,7 @@ public class BreakoutModel {
 
 	/**
 	 * Get the speed of the ball in x-direction
-	 * @return
+	 * @return the speed of the ball in x-direction
 	 */
 	public double getBallDeltaX() {
 		return this.ballDX;
@@ -167,7 +167,7 @@ public class BreakoutModel {
 
 	/**
 	 * Get the speed of the ball in y-direction
-	 * @return
+	 * @return the ball speed in y-direction
 	 */
 	public double getBallDeltaY() {
 		return this.ballDY;
@@ -203,7 +203,7 @@ public class BreakoutModel {
 	
 	/**
 	 * Get the current game score
-	 * @return
+	 * @return the score
 	 */
 	public int getScore(){
 		return this.score;
@@ -224,23 +224,41 @@ public class BreakoutModel {
 		this.score = this.score + 1 * multiplikator;
 	}
 	
+	/**
+	 * Get the current Level
+	 * @return the Level
+	 */
 	public int getLevel(){
 		return level;
 	}
+	
+	/**
+	 * starts the next Level
+	 */
 	public void nextLevel(){
 		level += 1;
 		multiplikator += 1;
 		lives += 1;
 	}
 	
+	/**
+	 * decrease the Live
+	 */
 	public void loseLive(){
 		lives -= 1;
 	}
-	
+	 /**
+	  * gets the current amount of lives
+	  * @return the amount of lives
+	  */
 	public int getLives(){
 		return lives;
 	}
 	
+	/**
+	 * get the current multiplicator
+	 * @return  the current multiplicator
+	 */
 	public int getMultiplikator(){
 		return multiplikator;
 	}

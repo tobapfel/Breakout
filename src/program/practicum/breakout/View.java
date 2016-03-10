@@ -103,8 +103,10 @@ public class View extends GraphicsProgram {
 	 * Remove all GObjects on the Canvas
 	 * and create new objects for the paddle, ball and bricks.
 	 * 
-	 * If there are no lives left or all bricks destroyed,
-	 * show the GameOver-screen.
+	 * If there are no lives left,
+	 * it show the GameOver-screen.
+	 * 
+	 * If there are all bricks destroyed it shows the continue screen and starts the next level
 	 */
 	public void updateView() {
 		this.removeAll();
@@ -112,24 +114,31 @@ public class View extends GraphicsProgram {
 		this.updateBall();
 		this.updatePaddle();
 		this.updateBricks();
+		// game over if no live left
 		if (!this.controller.checkLiveLeft()){
 			gameOverScreen();
 			this.controller.stopGame();
 			this.controller.mode = 4;
 		}
-		if (this.model.checkGameOver()){
+		// next level if no bricks are left
+		if (this.model.checkNoBricksLeft()){
 			continueGame();
 		}
+		// shows the continue screen
 		if (this.controller.mode == 3){
 			continueScreen();
 		}
-	
+		//shows the score
 		this.add(new GLabel("Score : " + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
+		// shows wich level
 		this.add(new GLabel("Level : " + this.model.getLevel(), this.WINDOW_WIDTH * 0.3, this.WINDOW_HEIGHT * 0.9));
+		// shows how many lives left
 		this.add(new GLabel("Leben : " + this.model.getLives(), this.WINDOW_WIDTH * 0.5, this.WINDOW_HEIGHT * 0.9));
 	}
 
-	
+	/**
+	 * starts the next level und shows the continue screen
+	 */
 	public void continueGame(){
 		this.controller.stopGame();
 		this.controller.mode = 3;
@@ -190,6 +199,9 @@ public class View extends GraphicsProgram {
 		
 	}
 	
+	/**
+	 * shows the continue screen
+	 */
 	public void continueScreen (){
 		GLabel label = new GLabel("CONTINUE ?");
 		GLabel label2 = new GLabel("Click Mouse to Continue");
@@ -209,10 +221,4 @@ public class View extends GraphicsProgram {
 		add (label2);
 		
 	}
-	
-	/*public void heartImg (){ //anzeige flackert aufgrund des image
-		GImage img = new GImage("Heart.png", 500, 500);
-		add (img);
-	}
-	*/
 }

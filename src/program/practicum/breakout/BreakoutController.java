@@ -49,8 +49,8 @@ public class BreakoutController {
 
 
 	/**
-	 * Update the paddlePosition
-	 * @param p The point, whereto the mouse moved
+	 *  Update the paddlePosition
+	 * @param e
 	 */
 	public void mouseMoved(MouseEvent e) {
 		this.model.setPaddlePosition(e.getX());
@@ -60,17 +60,21 @@ public class BreakoutController {
 	}
 
 	/**
-	 * Start the game or reset the ball
+	 * Start the game or reset the ball or starts next level
 	 */
 	public void mouseClicked(MouseEvent e) {
+		// starts the game
 		if (mode == 1) {
 			startGame();
 			mode = 2;
-		} else if (mode == 2){
+		} 
+		// resets the ball and lose a live
+		else if (mode == 2){
 			setBallToStart();
 			mode = 1;
 			this.model.loseLive();
 		}
+		// start next level
 		else if (mode == 3){
 			setBallToStart();
 			mode = 1;
