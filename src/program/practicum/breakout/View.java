@@ -131,6 +131,9 @@ public class View extends GraphicsProgram {
 			}
 			continueScreen();
 		}
+		if (this.controller.mode == 3){
+			continueScreen();
+		}
 	
 		this.add(new GLabel("" + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
 	}
@@ -196,6 +199,7 @@ public class View extends GraphicsProgram {
 		label2.setColor(Color.BLACK);
 		add (label);
 		add (label2);
+		
 	}
 	
 	/*public void heartImg (){ //anzeige flackert aufgrund des image
