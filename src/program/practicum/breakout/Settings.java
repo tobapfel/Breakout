@@ -7,7 +7,7 @@ import java.io.FileReader;
 import java.util.HashMap;
 
 public class Settings extends HashMap<String, Integer>{
-	/*
+	/**
 	 * Create a new SettingsMap.
 	 * Load the keys and values from a file
 	 * each line must look like the following:

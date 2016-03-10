@@ -44,6 +44,11 @@ public class BreakoutModel {
 		this.score = 0;
 	}
 
+	/**
+	 * Add the Brick at the given coordinate
+	 * @param row [int] the row of the brick
+	 * @param col [int] the column of the brick
+	 */
 	public void setBrick(int row, int col) {
 		this.bricks[row][col] = true;
 	}
@@ -56,7 +61,6 @@ public class BreakoutModel {
 	 * @param column
 	 *            [int] the column of the brick
 	 */
-
 	public void removeBrick(int row, int column) {
 		System.out.println("REMOVING BRICK: " + row + ", " + column);
 		if(this.bricks[row][column] == true){
@@ -65,6 +69,10 @@ public class BreakoutModel {
 		this.bricks[row][column] = false;
 	}
 	
+	/**
+	 * Remove this brick object
+	 * @param b [GObject]
+	 */
 	public void removeBrick(GObject b){
 		for (int i = 0; i < this.getBrickRowCount(); i++) {
 			for (int j = 0; j < this.getBrickColumnCount(); j++) {
@@ -89,68 +97,128 @@ public class BreakoutModel {
 		return check;
 		}
 
+	/**
+	 * Get the number of bricks in each row
+	 * @return
+	 */
 	public int getBrickRowCount() {
 		return this.bricks.length;
 	}
 
+	/**
+	 * Get the number of bricks in each column
+	 * @return
+	 */
 	public int getBrickColumnCount() {
 		return this.bricks[0].length;
 	}
-
+	
+	/**
+	 * Set the position of the paddle
+	 * @param x
+	 */
 	public void setPaddlePosition(double x) {
 		this.setPaddlePosition((int) x);
 	}
-
+	
+	/**
+	 * Set the position of the paddle
+	 * @param x
+	 */
 	public void setPaddlePosition(int x) {
 		x = Math.max(x, this.view.PADDLE_WIDTH / 2);
 		x = Math.min(x, this.view.WINDOW_WIDTH - (this.view.PADDLE_WIDTH / 2));
 		this.paddlePositionX = x;
 	}
 
+	/**
+	 * Get the position of the paddle
+	 * @return
+	 */
 	public double getPaddlePosition() {
 		return this.paddlePositionX;
 	}
-
+	
+	/**
+	 * Get the position of the ball in x-direction
+	 * @return
+	 */
 	public double getBallPositionX() {
 		return this.ballPositionX;
 	}
 
+	/**
+	 * Get the position of the ball in y-direction
+	 * @return
+	 */
 	public double getBallPositionY() {
 		return this.ballPositionY;
 	}
 
+	/**
+	 * Get the speed of the ball in x-direction
+	 * @return
+	 */
 	public double getBallDeltaX() {
 		return this.ballDX;
 	}
 
+	/**
+	 * Get the speed of the ball in y-direction
+	 * @return
+	 */
 	public double getBallDeltaY() {
 		return this.ballDY;
 	}
 
+	/**
+	 * Set the speed of the ball in x-direction
+	 */
 	public void setBallDeltaX(double x) {
 		this.ballDX = x;
 	}
 
+	/**
+	 * Set the speed of the ball in y-direction
+	 */
 	public void setBallDeltaY(double y) {
 		this.ballDY = y;
 	}
 
+	/**
+	 * Set the position of the ball in x-direction
+	 */
 	public void setBallPositionX(double x) {
 		this.ballPositionX = x;
 	}
 
+	/**
+	 * Set the position of the ball in y-direction
+	 */
 	public void setBallPositionY(double y) {
 		this.ballPositionY = y;
 	}
 	
+	/**
+	 * Get the current game score
+	 * @return
+	 */
 	public int getScore(){
 		return this.score;
 	}
 	
+	/**
+	 * Reset the score to 0
+	 */
 	public void resetScore(){
 		this.score = 0;
 	}
+	
+	/**
+	 * Increment the score by 1
+	 */
 	public void addScore(){
+		
 		this.score += 1;
 	}
 }
