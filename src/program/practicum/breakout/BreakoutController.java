@@ -9,8 +9,7 @@ public class BreakoutController {
 
 	public BreakoutModel model;
 	public View view;
-	private boolean mode = false; // false = at the beginning / true = after
-									// click
+	public int mode = 1; // 1 = Stop / 2 = Start / 3 = Continue? / 4 = GameOver
 
 	public BreakoutController(View view) {
 		this.view = view;
@@ -18,7 +17,7 @@ public class BreakoutController {
 		setBallToStart();
 	}
 
-	private void setBallToStart() {
+	public void setBallToStart() {
 		this.model.setBallPositionX(
 				((view.PADDLE_WIDTH - view.BALL_SIZE) / 2) - view.PADDLE_WIDTH / 2 + this.model.getPaddlePosition());
 		this.model.setBallPositionY(view.PADDLE_Y - 5 - view.BALL_SIZE);
@@ -37,18 +36,28 @@ public class BreakoutController {
 
 	public void mouseMoved(MouseEvent event) {
 		this.model.setPaddlePosition(event.getX());
-		if (!mode){
+		if (mode == 1){
+			setBallToStart();
+		}
+		else if (mode == 3){
 			setBallToStart();
 		}
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		if (!mode) {
+		if (mode == 1) {
 			startGame();
-		} else{
+			mode = 2;
+		} else if (mode == 2){
 			setBallToStart();
+			mode = 1;
+			this.model.lives -= 1;
 		}
-		mode = !mode;
+		else if (mode == 3){
+			setBallToStart();
+			System.out.println(mode);
+			mode = 1;
+		}
 	}
 
 	public void ballMovement() {
@@ -108,7 +117,7 @@ public class BreakoutController {
 			//this.model.setBallDeltaY(-1 * this.model.getBallDeltaY());
 			// Leben entfernen!
 			this.setBallToStart();
-			this.mode = false;
+			this.mode = 1;
 			this.model.lives -= 1;
 		}
 		// window top edge

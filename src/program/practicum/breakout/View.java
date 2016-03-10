@@ -86,10 +86,21 @@ public class View extends GraphicsProgram {
 		if (!this.controller.checkLiveLeft()){
 			gameOverScreen();
 			this.controller.stopGame();
+			this.controller.mode = 4;
 		}
 		if (this.model.checkGameOver()){
-			gameOverScreen();
 			this.controller.stopGame();
+			this.controller.mode = 3;
+			this.controller.setBallToStart();
+			for (int i = 0; i < this.model.getBrickRowCount(); i++) {
+				for (int j = 0; j < this.model.getBrickColumnCount(); j++) {
+					Bricks brick = new Bricks(i, j, ROWS, COLUMNS, getHeight(), getWidth());
+					bricks[i][j] = brick;
+					this.model.setBrick(i, j);
+
+				}
+			}
+			continueScreen();
 		}
 	
 		this.add(new GLabel("" + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
@@ -126,6 +137,25 @@ public class View extends GraphicsProgram {
 		label.setColor(Color.BLACK);
 		add (label);
 		
+	}
+	
+	public void continueScreen (){
+		GLabel label = new GLabel("CONTINUE ?");
+		GLabel label2 = new GLabel("Click Mouse to Continue");
+		label.setFont("arial-bold-70");
+		label2.setFont("arial-30");
+		FontMetrics fm = label.getFontMetrics();
+		FontMetrics fm2 = label2.getFontMetrics();
+		int lineHeight = fm.getHeight();
+		int lineWidth = fm.stringWidth("CONTINUE ?");
+		int lineHeight2 = fm2.getHeight();
+		int lineWidth2 = fm2.stringWidth("Click Mouse to Continue");
+		label.setLocation((WINDOW_WIDTH - lineWidth) / 2, (WINDOW_HEIGHT - lineHeight) / 2);
+		label.setColor(Color.BLACK);
+		label2.setLocation((WINDOW_WIDTH - lineWidth2) / 2, ((WINDOW_HEIGHT - lineHeight2) / 2) + 20);
+		label2.setColor(Color.BLACK);
+		add (label);
+		add (label2);
 	}
 	
 	/*public void heartImg (){ //anzeige flackert aufgrund des image
