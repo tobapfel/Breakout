@@ -45,10 +45,18 @@ public class Bricks extends GRect {
 		this.setFilled(true);
 	}
 
+	/**
+	 * Get the row of this brick
+	 * @return the row
+	 */
 	public int getRow() {
 		return this.row;
 	}
 
+	/**
+	 * Get the column of this brick
+	 * @return the column
+	 */
 	public int getCol() {
 		return this.col;
 	}
