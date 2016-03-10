@@ -69,11 +69,10 @@ public class BreakoutController {
 		} else if (mode == 2){
 			setBallToStart();
 			mode = 1;
-			this.model.lives -= 1;
+			this.model.loseLive();
 		}
 		else if (mode == 3){
 			setBallToStart();
-			System.out.println(mode);
 			mode = 1;
 		}
 	}
@@ -191,7 +190,7 @@ public class BreakoutController {
 			//this.model.setBallDeltaY(-1 * this.model.getBallDeltaY());
 			this.setBallToStart();
 			this.mode = 1;
-			this.model.lives -= 1;
+			this.model.loseLive();;
 		}
 		// window top edge
 		else if (topLeftCorner().getY() < 0) {
@@ -227,7 +226,7 @@ public class BreakoutController {
 	 * @return
 	 */
 	public boolean checkLiveLeft (){
-		if (this.model.lives == 0){
+		if (this.model.getLives() == 0){
 			return false;
 		}
 		return true;

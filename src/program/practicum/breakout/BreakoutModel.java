@@ -5,7 +5,7 @@ import acm.graphics.GObject;
 public class BreakoutModel {
 	private View view;
 	public boolean[][] bricks;
-	public int lives;
+	private int lives;
 
 	private double ballPositionX;
 	private double ballPositionY;
@@ -13,7 +13,9 @@ public class BreakoutModel {
 	private double ballDY = 0;
 	private double paddlePositionX;
 
-	public int score;
+	private int score;
+	private int level = 1;
+	private int multiplikator = 1;
 
 	/**
 	 * Constructor
@@ -219,6 +221,26 @@ public class BreakoutModel {
 	 */
 	public void addScore(){
 		
-		this.score += 1;
+		this.score = this.score + 1 * multiplikator;
+	}
+	
+	public int getLevel(){
+		return level;
+	}
+	public void nextLevel(){
+		level += 1;
+		multiplikator += 1;
+	}
+	
+	public void loseLive(){
+		lives -= 1;
+	}
+	
+	public int getLives(){
+		return lives;
+	}
+	
+	public int getMultiplikator(){
+		return multiplikator;
 	}
 }

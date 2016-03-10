@@ -27,7 +27,7 @@ public class View extends GraphicsProgram {
 	public int PADDLE_Y;
 
 	public int BALL_SIZE;
-	public int BALL_SPEED;
+	public double BALL_SPEED;
 	
 	Bricks[][] bricks;
 	private Ball ball;
@@ -118,26 +118,34 @@ public class View extends GraphicsProgram {
 			this.controller.mode = 4;
 		}
 		if (this.model.checkGameOver()){
-			this.controller.stopGame();
-			this.controller.mode = 3;
-			this.controller.setBallToStart();
-			for (int i = 0; i < this.model.getBrickRowCount(); i++) {
-				for (int j = 0; j < this.model.getBrickColumnCount(); j++) {
-					Bricks brick = new Bricks(i, j, ROWS, COLUMNS, getHeight(), getWidth());
-					bricks[i][j] = brick;
-					this.model.setBrick(i, j);
-
-				}
-			}
-			continueScreen();
+			continueGame();
 		}
 		if (this.controller.mode == 3){
 			continueScreen();
 		}
 	
-		this.add(new GLabel("" + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
+		this.add(new GLabel("Score : " + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
+		this.add(new GLabel("Level : " + this.model.getLevel(), this.WINDOW_WIDTH * 0.3, this.WINDOW_HEIGHT * 0.9));
+		this.add(new GLabel("Leben : " + this.model.getLives(), this.WINDOW_WIDTH * 0.5, this.WINDOW_HEIGHT * 0.9));
 	}
 
+	
+	public void continueGame(){
+		this.controller.stopGame();
+		this.controller.mode = 3;
+		this.controller.setBallToStart();
+		for (int i = 0; i < this.model.getBrickRowCount(); i++) {
+			for (int j = 0; j < this.model.getBrickColumnCount(); j++) {
+				Bricks brick = new Bricks(i, j, ROWS, COLUMNS, getHeight(), getWidth());
+				bricks[i][j] = brick;
+				this.model.setBrick(i, j);
+
+			}
+		}
+		continueScreen();
+		BALL_SPEED = BALL_SPEED * 1.3;
+		this.model.nextLevel();
+	}
 	/**
 	 * Create a new Paddle and set it to the PaddlePosition
 	 */
