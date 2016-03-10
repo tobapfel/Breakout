@@ -87,7 +87,7 @@ public class View extends GraphicsProgram {
 	 */
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		this.controller.handleMouseMovement(e.getPoint());
+		this.controller.mouseMoved(e);
 	}
 
 	/**
@@ -96,7 +96,7 @@ public class View extends GraphicsProgram {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		this.controller.handleMouseClick();
+		this.controller.mouseClicked(e);
 	}
 
 	/**
