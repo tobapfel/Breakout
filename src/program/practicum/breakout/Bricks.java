@@ -13,15 +13,6 @@ public class Bricks extends GRect {
 	 * @param row
 	 *            of the brick
 	 * @param col
-	 *            of the brick
-	 */
-
-	/**
-	 * builds a GRect with the given 2d - index
-	 * 
-	 * @param row
-	 *            of the brick
-	 * @param col
 	 *            of the bricks
 	 * @param numberOfRow
 	 *            total amount of rows
@@ -60,23 +51,5 @@ public class Bricks extends GRect {
 			break;
 		}
 		this.setFilled(true);
-	}
-
-	/**
-	 * Get the row of this brick
-	 * 
-	 * @return the row
-	 */
-	public int getRow() {
-		return this.row;
-	}
-
-	/**
-	 * Get the column of this brick
-	 * 
-	 * @return the column
-	 */
-	public int getCol() {
-		return this.col;
 	}
 }
