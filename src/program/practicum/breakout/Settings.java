@@ -9,9 +9,16 @@ import java.util.HashMap;
 public class Settings extends HashMap<String, Integer>{
 	/**
 	 * Create a new SettingsMap.
-	 * Load the keys and values from a file
-	 * each line must look like the following:
-	 * KEY:VALUE
+	 * Load the keys and values from the file settings.txt
+	 * which must be located in the same folder as the Breakout.jar
+	 * this file can look like this:
+	 * 
+	 * # COMMENT
+	 * FRAME_PAUSE = 7
+	 * BALL_SPEED = 5
+	 * ROWS = 6
+	 * COLUMNS = 5
+	`* LIVS = 10
 	 * 
 	 */
 	public Settings(){
