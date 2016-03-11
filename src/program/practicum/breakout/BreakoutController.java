@@ -9,7 +9,7 @@ public class BreakoutController {
 
 	public BreakoutModel model;
 	public View view;
-	public int mode = 1; // 1 = Stop / 2 = Start / 3 = Continue? / 4 = GameOver
+	public int mode = 1; // 1 = Pause / 2 = Game is running / 3 = Continue? / 4 = GameOver
 
 	/**
 	 * Create a new BreakoutController
@@ -225,9 +225,9 @@ public class BreakoutController {
 	}
 	
 	/**
-	 * true = lives are left
-	 * false = no live is left
-	 * @return
+	 * Checks if the Player has lives left or not
+	 * @return 	true = lives are left
+	 * 			false = no live is left
 	 */
 	public boolean checkLiveLeft (){
 		if (this.model.getLives() == 0){

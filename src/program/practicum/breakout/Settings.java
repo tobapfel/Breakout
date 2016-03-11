@@ -43,7 +43,6 @@ public class Settings extends HashMap<String, Integer>{
 		    		// lines starting with '#' are comments 
 		    		continue;
 		    	}
-		       System.out.println(line);
 		       String[] splitted = line.split("\\s=\\s");
 		       this.put(splitted[0], Integer.parseInt(splitted[1]));
 		    }

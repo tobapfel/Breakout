@@ -64,7 +64,6 @@ public class BreakoutModel {
 	 *            [int] the column of the brick
 	 */
 	public void removeBrick(int row, int column) {
-		System.out.println("REMOVING BRICK: " + row + ", " + column);
 		if(this.bricks[row][column] == true){
 			this.addScore();
 		}

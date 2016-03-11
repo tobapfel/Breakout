@@ -130,14 +130,14 @@ public class View extends GraphicsProgram {
 		}
 		//shows the score
 		this.add(new GLabel("Score : " + this.model.getScore(), this.WINDOW_WIDTH * 0.1, this.WINDOW_HEIGHT * 0.9));
-		// shows wich level
+		// shows which level
 		this.add(new GLabel("Level : " + this.model.getLevel(), this.WINDOW_WIDTH * 0.3, this.WINDOW_HEIGHT * 0.9));
 		// shows how many lives left
 		this.add(new GLabel("Leben : " + this.model.getLives(), this.WINDOW_WIDTH * 0.5, this.WINDOW_HEIGHT * 0.9));
 	}
 
 	/**
-	 * starts the next level und shows the continue screen
+	 * starts the next level and shows the continue screen
 	 */
 	public void continueGame(){
 		this.controller.stopGame();
